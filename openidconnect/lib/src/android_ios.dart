@@ -16,6 +16,8 @@ class OpenIdConnectAndroidiOS {
       barrierDismissible: false,
       builder: (dialogContext) {
         return AlertDialog(
+          contentPadding: EdgeInsets.all(0),
+          insetPadding: EdgeInsets.all(0),
           actions: [
             IconButton(
               onPressed: () => Navigator.pop(dialogContext, null),
