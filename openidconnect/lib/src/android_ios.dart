@@ -35,15 +35,19 @@ class OpenIdConnectAndroidiOS {
             ),
             Align(
               alignment: Alignment.topRight,
-              child: IconButton(
-                onPressed: () => Navigator.pop(dialogContext, null),
-                icon: Icon(Icons.close),
+              child: Material(
+                type: MaterialType.transparency,
+                child: IconButton(
+                  onPressed: () => Navigator.pop(dialogContext, null),
+                  icon: Icon(Icons.close),
+                ),
               ),
             ),
           ],
         );
       },
     );
+
 
 
     if (result == null) throw AuthenticationException(ERROR_USER_CLOSED);
