@@ -23,10 +23,8 @@ class OpenIdConnectAndroidiOS {
             ),
           ],
           content: Container(
-            width:
-                min(popupWidth.toDouble(), MediaQuery.of(context).size.width),
-            height:
-                min(popupHeight.toDouble(), MediaQuery.of(context).size.height),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: flutterWebView.WebView(
               javascriptMode: flutterWebView.JavascriptMode.unrestricted,
               initialUrl: authorizationUrl,
