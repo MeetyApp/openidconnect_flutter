@@ -19,6 +19,7 @@ class OpenIdConnectAndroidiOS {
           children: [
             AlertDialog(
               contentPadding: EdgeInsets.all(0),
+              insetPadding: EdgeInsets.all(0),
               content: Container(
                 width: MediaQuery.of(dialogContext).size.width,
                 height: MediaQuery.of(dialogContext).size.height,
