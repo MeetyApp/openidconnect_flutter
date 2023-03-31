@@ -20,8 +20,8 @@ class OpenIdConnectAndroidiOS {
             AlertDialog(
               contentPadding: EdgeInsets.all(0),
               content: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(dialogContext).size.width,
+                height: MediaQuery.of(dialogContext).size.height,
                 child: flutterWebView.WebView(
                   javascriptMode: flutterWebView.JavascriptMode.unrestricted,
                   initialUrl: authorizationUrl,
@@ -39,7 +39,7 @@ class OpenIdConnectAndroidiOS {
                 type: MaterialType.transparency,
                 child: IconButton(
                   onPressed: () => Navigator.pop(dialogContext, null),
-                  icon: Icon(Icons.close),
+                  icon: Icon(Icons.close, color: Colors.blue),
                 ),
               ),
             ),
@@ -47,6 +47,7 @@ class OpenIdConnectAndroidiOS {
         );
       },
     );
+
 
 
 
