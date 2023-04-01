@@ -34,20 +34,11 @@ class OpenIdConnectAndroidiOS {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Material(
-                type: MaterialType.transparency,
-                child: IconButton(
-                  onPressed: () => Navigator.pop(dialogContext, null),
-                  icon: Icon(Icons.close, color: Colors.blue),
-                ),
-              ),
-            ),
           ],
         );
       },
     );
+
 
 
 
