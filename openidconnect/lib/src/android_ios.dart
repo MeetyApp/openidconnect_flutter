@@ -24,6 +24,7 @@ class OpenIdConnectAndroidiOS {
                 width: MediaQuery.of(dialogContext).size.width,
                 height: MediaQuery.of(dialogContext).size.height,
                 child: flutterWebView.WebView(
+                  userAgent: 'random',
                   javascriptMode: flutterWebView.JavascriptMode.unrestricted,
                   initialUrl: authorizationUrl,
                   onPageFinished: (url) {
