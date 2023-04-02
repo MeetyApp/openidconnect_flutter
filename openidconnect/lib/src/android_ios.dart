@@ -35,14 +35,16 @@ class OpenIdConnectAndroidiOS {
                 ),
               ),
             ),
-            Container(
-              color: Colors.black,
-              height: MediaQuery.of(dialogContext).padding.top,
+            Expanded(
+              child: Container(
+                color: Colors.transparent,
+              ),
             ),
           ],
         );
       },
     );
+
 
 
 
