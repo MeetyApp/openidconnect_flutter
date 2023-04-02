@@ -17,8 +17,7 @@ class OpenIdConnectAndroidiOS {
       builder: (dialogContext) {
         SystemChrome.setEnabledSystemUIOverlays([]); // Hide the status bar
         return WillPopScope(
-          onWillPop: () async =>
-              false, // Prevent the back button from closing the dialog
+          onWillPop: () async => false, // Prevent the back button from closing the dialog
           child: Scaffold(
             body: Container(
               width: MediaQuery.of(dialogContext).size.width,
@@ -29,8 +28,7 @@ class OpenIdConnectAndroidiOS {
                 initialUrl: authorizationUrl,
                 onPageFinished: (url) {
                   if (url.startsWith(redirectUrl)) {
-                    SystemChrome.setEnabledSystemUIOverlays(
-                        SystemUiOverlay.values); // Show the status bar again
+                    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values); // Show the status bar again
                     Navigator.pop(dialogContext, url);
                   }
                 },
@@ -40,6 +38,7 @@ class OpenIdConnectAndroidiOS {
         );
       },
     );
+
 
     if (result == null) throw AuthenticationException(ERROR_USER_CLOSED);
 
