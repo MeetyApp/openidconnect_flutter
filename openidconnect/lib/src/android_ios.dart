@@ -16,13 +16,17 @@ class OpenIdConnectAndroidiOS {
       barrierDismissible: false,
       builder: (dialogContext) {
         SystemChrome.setEnabledSystemUIOverlays([]); // Hide the status bar
+        final statusBarHeight = MediaQuery.of(dialogContext).padding.top;
         return WillPopScope(
           onWillPop: () async => false, // Prevent the back button from closing the dialog
-          child: Material(
-            color: Colors.transparent,
-            child: Stack(
-              children: [
-                Positioned.fill(
+          child: Stack(
+            children: [
+              AlertDialog(
+                contentPadding: EdgeInsets.all(0),
+                insetPadding: EdgeInsets.all(0),
+                content: Container(
+                  width: MediaQuery.of(dialogContext).size.width,
+                  height: MediaQuery.of(dialogContext).size.height + statusBarHeight,
                   child: flutterWebView.WebView(
                     userAgent: 'random',
                     javascriptMode: flutterWebView.JavascriptMode.unrestricted,
@@ -35,12 +39,13 @@ class OpenIdConnectAndroidiOS {
                     },
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
     );
+
 
 
 
