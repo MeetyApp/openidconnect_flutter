@@ -15,36 +15,27 @@ class OpenIdConnectAndroidiOS {
       context: context,
       barrierDismissible: false,
       builder: (dialogContext) {
-        return Stack(
-          children: [
-            AlertDialog(
-              contentPadding: EdgeInsets.all(0),
-              insetPadding: EdgeInsets.all(0),
-              content: Container(
-                width: MediaQuery.of(dialogContext).size.width,
-                height: MediaQuery.of(dialogContext).size.height,
-                child: flutterWebView.WebView(
-                  userAgent: 'random',
-                  javascriptMode: flutterWebView.JavascriptMode.unrestricted,
-                  initialUrl: authorizationUrl,
-                  onPageFinished: (url) {
-                    if (url.startsWith(redirectUrl)) {
-                      Navigator.pop(dialogContext, url);
-                    }
-                  },
-                ),
-              ),
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+          ),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: flutterWebView.WebView(
+              userAgent: 'random',
+              javascriptMode: flutterWebView.JavascriptMode.unrestricted,
+              initialUrl: authorizationUrl,
+              onPageFinished: (url) {
+                if (url.startsWith(redirectUrl)) {
+                  Navigator.pop(dialogContext, url);
+                }
+              },
             ),
-            Expanded(
-              child: Container(
-                color: Colors.transparent,
-              ),
-            ),
-          ],
+          ),
         );
       },
     );
-
 
 
 
