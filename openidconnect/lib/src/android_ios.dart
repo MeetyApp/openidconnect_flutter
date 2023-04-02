@@ -15,29 +15,38 @@ class OpenIdConnectAndroidiOS {
       context: context,
       barrierDismissible: false,
       builder: (dialogContext) {
-        SystemChrome.setEnabledSystemUIOverlays([]); // Hide the status bar
-        return WillPopScope(
-          onWillPop: () async => false, // Prevent the back button from closing the dialog
-          child: Scaffold(
-            body: Container(
-              width: MediaQuery.of(dialogContext).size.width,
-              height: MediaQuery.of(dialogContext).size.height,
-              child: flutterWebView.WebView(
-                userAgent: 'random',
-                javascriptMode: flutterWebView.JavascriptMode.unrestricted,
-                initialUrl: authorizationUrl,
-                onPageFinished: (url) {
-                  if (url.startsWith(redirectUrl)) {
-                    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values); // Show the status bar again
-                    Navigator.pop(dialogContext, url);
-                  }
-                },
+        return Stack(
+          children: [
+            AlertDialog(
+              contentPadding: EdgeInsets.all(0),
+              insetPadding: EdgeInsets.all(0),
+              content: Container(
+                width: MediaQuery.of(dialogContext).size.width,
+                height: MediaQuery.of(dialogContext).size.height,
+                child: flutterWebView.WebView(
+                  userAgent: 'random',
+                  javascriptMode: flutterWebView.JavascriptMode.unrestricted,
+                  initialUrl: authorizationUrl,
+                  onPageFinished: (url) {
+                    if (url.startsWith(redirectUrl)) {
+                      Navigator.pop(dialogContext, url);
+                    }
+                  },
+                ),
               ),
             ),
-          ),
+            Container(
+              color: Colors.black,
+              height: MediaQuery.of(dialogContext).padding.top,
+            ),
+          ],
         );
       },
     );
+
+
+
+
 
 
     if (result == null) throw AuthenticationException(ERROR_USER_CLOSED);
